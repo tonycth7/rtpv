@@ -1,0 +1,20 @@
+[package]
+name        = "rtpv-tui"
+description = "rtpv TUI — ratatui-powered fuzzy picker and action menus"
+version.workspace    = true
+edition.workspace    = true
+authors.workspace    = true
+license.workspace    = true
+rust-version.workspace = true
+
+[[bin]]
+name = "rtpv-tui"
+path = "src/main.rs"
+
+[dependencies]
+rtpv-core   = { path = "../rtpv-core", features = ["age-native", "clipboard"] }
+ratatui.workspace    = true
+crossterm.workspace  = true
+anyhow.workspace     = true
+fuzzy-matcher.workspace = true
+chrono.workspace     = true

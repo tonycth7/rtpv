@@ -1,0 +1,76 @@
+[workspace]
+resolver = "2"
+members = [
+    "rtpv-core",
+    "rtpv-cli",
+    "rtpv-tui",
+    "rtpv-menu",
+]
+
+[workspace.package]
+version      = "0.1.0"
+edition      = "2021"
+authors      = ["rtpv contributors"]
+license      = "MIT"
+rust-version = "1.75"
+
+[workspace.dependencies]
+# ── Serialization ────────────────────────────────────────────────
+serde       = { version = "1",    features = ["derive"] }
+serde_json  = "1"
+toml        = "0.8"
+
+# ── Error handling ───────────────────────────────────────────────
+anyhow      = "1"
+thiserror   = "1"
+
+
+# ── Crypto ───────────────────────────────────────────────────────
+# age encryption (rage = maintained Rust fork)
+age        = "0.11"
+# For gpg-compat subprocess mode
+# (no crate needed — we shell out to gpg)
+
+# ── Password / OTP ───────────────────────────────────────────────
+totp-rs     = { version = "5", features = ["gen_secret", "qr"] }
+rand        = "0.8"
+zxcvbn      = "2"
+
+# ── Git ──────────────────────────────────────────────────────────
+git2        = { version = "0.18", default-features = false }
+
+# ── CLI ──────────────────────────────────────────────────────────
+clap        = { version = "4", features = ["derive", "env", "unicode"] }
+
+# ── TUI / Terminal ───────────────────────────────────────────────
+ratatui     = "0.26"
+crossterm   = { version = "0.27", features = ["event-stream"] }
+
+# ── Clipboard ────────────────────────────────────────────────────
+arboard     = "3"
+
+# ── HTTP (HIBP) ──────────────────────────────────────────────────
+reqwest     = { version = "0.11", features = ["blocking", "json"] }
+sha1        = "0.10"
+
+# ── Misc ─────────────────────────────────────────────────────────
+directories = "5"          # XDG / platform dirs
+fuzzy-matcher = "0.3"
+chrono      = { version = "0.4", features = ["serde"] }
+notify-rust = "4"
+walkdir     = "2"
+base32      = "0.4"
+urlencoding = "2"
+shellexpand = "3"
+dirs        = "5"
+tempfile    = "3"
+base64        = "0.21"
+url           = "2"
+clap_complete = "4"
+clap_mangen   = "0.2"
+
+[profile.release]
+opt-level     = 3
+lto           = true
+codegen-units = 1
+strip         = true

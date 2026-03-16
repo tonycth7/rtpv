@@ -1,1 +1,9 @@
 /target
+<<<<<<< HEAD
+=======
+**/*.age
+identity.age
+recipients.txt
+.env
+*.log
+>>>>>>> 28d037b (first prototype)
